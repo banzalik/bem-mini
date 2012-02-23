@@ -2,7 +2,7 @@ all:: bem-bl
 all:: $(patsubst %.bemjson.js,%.html,$(wildcard pages/*/*.bemjson.js))
 
 BEM_BUILD=bem build \
-	-l bem-mini/ \
+	-l bem-mini/blocks/ \
 	-l blocks/ \
 	-d $< \
 	-t $1 \
