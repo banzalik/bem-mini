@@ -1,0 +1,32 @@
+default, this.block, this.ctx.debug, !this.ctx._debug: {
+
+         var debug = '';
+
+            if (this.ctx.debug.length)
+            {
+                debug = this.ctx.debug;
+            }
+            else
+            {
+                debug = this.block + (this.ctx.elem ? (' elem: ' + this.ctx.elem) : '')
+            }
+
+         local(
+            this._mode = '',
+            this.ctx._debug = true,
+            this.ctx= {
+                tag: '',
+                content: [{
+                    tag: '',
+                    content: '<!-- Start: ' + debug + ' -->'
+                },
+                    this.ctx
+                ,
+                {
+                    tag: '',
+                    content: '<!-- / End: ' + debug + ' -->'
+                }
+                ]
+            }
+        ) this.apply();
+}
